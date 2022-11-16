@@ -1,0 +1,12 @@
+.header__nav-container {
+  display: flex;
+  margin: 0;
+  transition: .3s;
+}
+
+@media screen and (max-width: 880px) {
+  .header__nav-container {
+    margin-right: 30px;
+  }
+}
+

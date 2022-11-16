@@ -1,0 +1,14 @@
+.footer {
+  margin: 66px auto 0;
+  max-width: 880px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+@media screen and (max-width: 425px) {
+  .footer {
+    margin-top: 48px;
+  }
+}
+
