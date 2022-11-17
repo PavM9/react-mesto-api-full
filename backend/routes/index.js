@@ -11,6 +11,12 @@ const routes = express.Router();
 
 routes.all('*', express.json());
 
+routes.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 routes.post(
   '/signin',
   celebrate({
