@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const cors = require('./middlewares/cors');

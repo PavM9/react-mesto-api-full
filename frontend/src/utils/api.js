@@ -95,9 +95,10 @@ class Api {
 }
 
 export default new Api({
-  groupUrl: 'https://mesto.nomoreparties.co/v1/cohort-40',
+  // groupUrl: 'https://mesto.nomoreparties.co/v1/cohort-40',
+  groupUrl: 'https://api.pavm9.nomoredomains.icu',
   headers: {
-    authorization: '56dc158d-aab3-4147-9791-8bd358db9073',
+    // authorization: '56dc158d-aab3-4147-9791-8bd358db9073',
     'Content-Type': 'application/json'
   }
 });

@@ -49,8 +49,10 @@ class Auth {
 }
 
 export default new Auth({
-  baseUrl: 'https://auth.nomoreparties.co',
+  // baseUrl: 'https://auth.nomoreparties.co',
+  baseUrl: 'https://api.pavm9.nomoredomains.icu',
   headers: {
+    'Accept': 'application/json',
     'Content-Type': 'application/json'
   }
 });

@@ -7,19 +7,7 @@ import App from './components/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
     <BrowserRouter basename='/react-mesto-auth'>
       <App />
     </BrowserRouter>
-  // </React.StrictMode>
 );
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <BrowserRouter basename='/react-mesto-auth'>
-//       <App />
-//     </BrowserRouter>
-//   </React.StrictMode>,
-//   document.querySelector('.root')
-// );
-
