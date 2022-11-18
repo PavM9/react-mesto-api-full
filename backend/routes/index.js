@@ -3,7 +3,7 @@ const { celebrate, Joi } = require('celebrate');
 const { validateUrl } = require('../utils/utils');
 const { users } = require('./users');
 const { cards } = require('./cards');
-const { login, createUser } = require('../controllers/users');
+const { login, logout, createUser } = require('../controllers/users');
 const { auth } = require('../middlewares/auth');
 const { NotFoundError } = require('../utils/errors');
 
@@ -41,6 +41,8 @@ routes.post(
   }),
   createUser,
 );
+
+routes.post('/signout', auth, logout);
 
 routes.use('/users', auth, users);
 routes.use('/cards', auth, cards);

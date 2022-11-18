@@ -16,6 +16,7 @@ class Api {
   _getProfile() {
     return fetch(`${this._groupUrl}/users/me`, {
       method: 'GET',
+      credentials: 'include',
       headers: this._headers
     })
     .then(this._checkResponse)
@@ -25,6 +26,7 @@ class Api {
   _getInitialCards() {
     return fetch(`${this._groupUrl}/cards`, {
       method: 'GET',
+      credentials: 'include',
       headers: this._headers
     })
     .then(this._checkResponse)
@@ -40,7 +42,7 @@ class Api {
     return fetch(`${this._groupUrl}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
-    // делает из объекта строку
+      credentials: 'include',
       body: JSON.stringify(data)
     })
     .then(this._checkResponse)
@@ -51,6 +53,7 @@ class Api {
     return fetch(`${this._groupUrl}/cards`, {
       method: 'POST',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify(data)
     })
     .then(this._checkResponse)
@@ -60,7 +63,8 @@ class Api {
   deleteCard(_id) {
     return fetch(`${this._groupUrl}/cards/${_id}`, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._headers,
+      credentials: 'include',
     })
     .then(this._checkResponse)
   }
@@ -69,7 +73,8 @@ class Api {
   removeLike(_id) {
     return fetch(`${this._groupUrl}/cards/${_id}/likes`, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._headers,
+      credentials: 'include',
     })
     .then(this._checkResponse)
   }
@@ -78,7 +83,8 @@ class Api {
   addLike(_id) {
     return fetch(`${this._groupUrl}/cards/${_id}/likes`, {
       method: 'PUT',
-      headers: this._headers
+      headers: this._headers,
+      credentials: 'include',
     })
     .then(this._checkResponse)
   }
@@ -88,6 +94,7 @@ class Api {
     return fetch(`${this._groupUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify(data)
     })
     .then(this._checkResponse)

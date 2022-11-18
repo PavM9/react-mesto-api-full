@@ -27,6 +27,16 @@ function login(req, res, next) {
     .catch(next);
 }
 
+function logout(req, res) {
+  res.cookie('jwt', 'jwt.token.revoked', {
+    httpOnly: true,
+    sameSite: true,
+    maxAge: -1,
+  }).send({
+    message: 'Вы вышли из профиля',
+  });
+}
+
 async function getUsers(req, res, next) {
   try {
     const users = await User.find({});
@@ -141,5 +151,5 @@ async function updateAvatar(req, res, next) {
 }
 
 module.exports = {
-  login, getUsers, getUserById, getCurrentUser, createUser, updateUser, updateAvatar,
+  login, logout, getUsers, getUserById, getCurrentUser, createUser, updateUser, updateAvatar,
 };

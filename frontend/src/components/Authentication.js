@@ -44,10 +44,10 @@ function Authentication({ title, onSubmit, buttonSubmitText }) {
           className="auth__submit-button"
           type="submit">{buttonSubmitText}</button>
       </form>
-      <Route path="/sign-up">
+      <Route path="/signup">
         <p className="auth__text">
           Уже зарегистрированы?&nbsp;
-          <Link to="/sign-in" className="auth__link">
+          <Link to="/signin" className="auth__link">
             Войти
           </Link>
         </p>

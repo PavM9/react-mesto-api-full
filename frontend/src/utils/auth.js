@@ -17,6 +17,7 @@ class Auth {
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         "password": password,
         "email": email
@@ -29,6 +30,7 @@ class Auth {
     return fetch(`${this._baseUrl}/signin`, {
       method: "POST",
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         "password": password,
         "email": email
@@ -36,14 +38,31 @@ class Auth {
     }).then(this._checkResponse);
   }
 
+  //Выход
+  signOut() {
+    return fetch(`${this._baseUrl}/signout`, {
+      method: "POST",
+      headers: this._headers,
+      credentials: 'include',
+    }).then(this._checkResponse);
+  }
+
   //Получение токена
-  getToken(jwt) {
+  // getToken(jwt) {
+  //   return fetch(`${this._baseUrl}/users/me`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Authorization": `Bearer ${jwt}`
+  //     },
+  //   }).then(this._checkResponse);
+  // }
+
+  getToken() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${jwt}`
-      },
+      credentials: 'include',
+      headers: this._headers,
     }).then(this._checkResponse);
   }
 }

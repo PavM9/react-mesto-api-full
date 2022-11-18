@@ -16,15 +16,15 @@ function Header({ isLoggedIn, userEmail, onSignOut }) {
       />
       <nav className="header__nav-container">
         <p className="header__email">{isLoggedIn ? userEmail : ""}</p>
-        <Route path="/sign-up">
-          <NavLink className="header__link" to={"/sign-in"}>
+        <Route path="/signup">
+          <NavLink className="header__link" to={"/signin"}>
             Войти
           </NavLink>
         </Route>
-        <Route path="/sign-in">
+        <Route path="/signin">
           <NavLink
             className="header__link"
-            to={"/sign-up"}
+            to={"/signup"}
           >
             Регистрация
           </NavLink>
@@ -32,7 +32,7 @@ function Header({ isLoggedIn, userEmail, onSignOut }) {
         <Route exact path="/">
           <NavLink
             className="header__link"
-            to={"/sign-in"}
+            to={"/signin"}
             onClick={handleSignOut}
           >
             Выйти

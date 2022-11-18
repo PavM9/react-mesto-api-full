@@ -7,7 +7,7 @@ import App from './components/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <BrowserRouter basename='/react-mesto-auth'>
+    <BrowserRouter>
       <App />
     </BrowserRouter>
 );

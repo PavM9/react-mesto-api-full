@@ -91,20 +91,20 @@ function App() {
 
   // Запрос в auth на получение токена
   React.useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
+    // const jwt = localStorage.getItem("jwt");
+    // if (jwt) {
       auth
-        .getToken(jwt)
+        .getToken()
         .then((res) => {
           if (res) {
             setIsLoggedIn(true);
-            setUserEmail(res.data.email);
+            setUserEmail(res.email);
             history.push("/");
           }
         }).catch((err) => {
           console.error(err);
         });
-    }
+    // }
   }, [history]);
 
   // Запрос в auth на регистрацию
@@ -114,7 +114,7 @@ function App() {
       .then(() => {
         setPopupImage(success);
         setPopupTitle("Вы успешно зарегистрировались!");
-        history.push("/sign-in");
+        history.push("/signin");
       }).catch(() => {
         handleAuthError();
       }).finally(handleInfoTooltip);
@@ -124,7 +124,7 @@ function App() {
   function onSignIn(email, password) {
     auth
       .signIn(email, password).then((res) => {
-        localStorage.setItem("jwt", res.token);
+        // localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
         setUserEmail(email);
         history.push("/");
@@ -140,10 +140,11 @@ function App() {
   }
 
   function onSignOut() {
+    auth.signOut()
     setIsLoggedIn(false);
     setUserEmail(null);
-    history.push("/sign-in");
-    localStorage.removeItem("jwt");
+    history.push("/signin");
+    // localStorage.removeItem("jwt");
   }
 
   function handleConfirmDelete(card) {
@@ -250,20 +251,20 @@ function App() {
             onCardDelete={handleConfirmDelete}
           />
 
-          <Route path="/sign-up">
+          <Route path="/signup">
             <Register
               onSignUp={onSignUp}
             />
           </Route>
 
-          <Route path="/sign-in">
+          <Route path="/signin">
             <Login
               onSignIn={onSignIn}
             />
           </Route>
 
           <Route path="*">
-            <Redirect to={!isLoggedIn ? "/sign-in" : "/"} />
+            <Redirect to={!isLoggedIn ? "/signin" : "/"} />
           </Route>
         </Switch>
 
