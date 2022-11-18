@@ -91,8 +91,6 @@ function App() {
 
   // Запрос в auth на получение токена
   React.useEffect(() => {
-    // const jwt = localStorage.getItem("jwt");
-    // if (jwt) {
       auth
         .getToken()
         .then((res) => {
@@ -104,7 +102,6 @@ function App() {
         }).catch((err) => {
           console.error(err);
         });
-    // }
   }, [history]);
 
   // Запрос в auth на регистрацию
@@ -124,7 +121,6 @@ function App() {
   function onSignIn(email, password) {
     auth
       .signIn(email, password).then((res) => {
-        // localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
         setUserEmail(email);
         history.push("/");
@@ -144,7 +140,6 @@ function App() {
     setIsLoggedIn(false);
     setUserEmail(null);
     history.push("/signin");
-    // localStorage.removeItem("jwt");
   }
 
   function handleConfirmDelete(card) {
