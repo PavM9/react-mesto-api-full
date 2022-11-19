@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
-const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
+// const helmet = require('helmet');
+// const rateLimit = require('express-rate-limit');
 const cors = require('./middlewares/cors');
 const { routes } = require('./routes');
 const { handleError } = require('./middlewares/handleError');
@@ -36,7 +36,7 @@ mongoose
   });
 
 app.use(requestLogger);
-app.use(limiter);
+// app.use(limiter);
 // app.use(helmet());
 app.use(cors);
 app.use(bodyParser.json());
