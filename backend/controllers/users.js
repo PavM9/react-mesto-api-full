@@ -28,13 +28,7 @@ function login(req, res, next) {
 }
 
 function logout(req, res) {
-  res.cookie('jwt', 'jwt.token.revoked', {
-    httpOnly: true,
-    sameSite: true,
-    maxAge: -1,
-  }).send({
-    message: 'Вы вышли из профиля',
-  });
+  res.clearCookie('jwt').send({ message: 'Вы вышли из профиля' });
 }
 
 async function getUsers(req, res, next) {
@@ -104,9 +98,10 @@ async function createUser(req, res, next) {
   } catch (err) {
     if (err.name === 'MongoServerError' && err.code === 11000) {
       next(new ConflictError('Пользователь с таким логином уже существует'));
-    } else {
-      next(err);
+    } else if (err.name === 'ValidationError') {
+      next(new BadRequestError('Неверный формат данных в запросе'));
     }
+    next(err);
   }
 }
 
@@ -126,6 +121,9 @@ async function updateUser(req, res, next) {
 
     res.send(user);
   } catch (err) {
+    if (err.name === 'ValidationError') {
+      next(new BadRequestError('Неверный формат данных в запросе'));
+    }
     next(err);
   }
 }
@@ -146,6 +144,9 @@ async function updateAvatar(req, res, next) {
 
     res.send(user);
   } catch (err) {
+    if (err.name === 'ValidationError') {
+      next(new BadRequestError('Неверный формат данных в запросе'));
+    }
     next(err);
   }
 }
